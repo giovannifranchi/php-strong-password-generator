@@ -1,7 +1,9 @@
 <?php
 session_start();
 
-
+if(empty($_SESSION['length'])){
+    header('Location: ./index.php');
+}
 
 
 require __DIR__ . '/data/functions.php';
@@ -24,6 +26,8 @@ $length = $_SESSION['length'];
     <h1>Your password is:</h1>
     
     <h2><?php echo generatePassword($length,$up_chars,$low_chars, $numbers,$symbols)?></h2>
+
+    <a href="reset.php">Try Again</a>
 
 
 </body>
