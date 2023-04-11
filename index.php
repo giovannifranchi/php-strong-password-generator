@@ -1,39 +1,13 @@
 <?php
-// $up_chars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'Z'];
-// $low_chars = [];
-// $numbers = [];
-// $symbols = ['?', '!', '#', '|', '*', '§', '£', '$', '%', '%'];
-
-// foreach ($up_chars as $char) {
-//     $low_chars[] = strtolower($char);
-// }
-
-// for ($i = 0; $i < 10; $i++) {
-//     $numbers[] = "$i";
-// }
-
-// function generatePassword($length, $up_chars, $low_chars, $numbers, $symbols){
-//     $passwordArray = [];
-//     for($i = 0; $i < $length; $i++){
-//         $random_selector = rand(1, 4);
-//         if($random_selector == 1){
-//             $passwordArray[] = $up_chars[rand(0, count($up_chars) - 1)];
-//         }else if($random_selector == 2){
-//             $passwordArray[] = $low_chars[rand(0, count($low_chars) - 1)];
-//         }else if($random_selector == 3){
-//             $passwordArray[] = $symbols[rand(0, count($symbols) - 1)];
-//         }else{
-//             $passwordArray[] = $numbers[rand(0, count($numbers) - 1)];
-//         }
-//     }
-//     return join('', $passwordArray);
-// }
-
-
-// $_GET['length'];
+session_start();
 
 require_once __DIR__. '/data/functions.php';
 require_once __DIR__. '/data/variables.php';
+
+if(!empty($_GET['length']) && $_GET['length'] > 7){
+    $_SESSION['length'] = $_GET['length'];
+    header("Location: ./result.php");
+}
 
 
 ?>
@@ -62,7 +36,7 @@ require_once __DIR__. '/data/variables.php';
         <div class="row bg-info py-3 rounded">
             <div class="col-12">
                 <h3>
-                    <?php echo empty($_GET['length']) ? 'nessun valore' : generatePassword($_GET['length'], $up_chars, $low_chars, $numbers, $symbols); ?>
+                   Fill the field below!
                 </h3>
             </div>
         </div>
@@ -75,7 +49,7 @@ require_once __DIR__. '/data/variables.php';
                     <h3>Lunghezza password:</h3>
                 </div>
                 <div class="col-4">
-                    <input type="text" name='length'>
+                    <input type="number" name='length'>
                 </div>
             </div>
             <div class="row pb-4">
