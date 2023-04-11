@@ -6,6 +6,10 @@ require_once __DIR__. '/data/variables.php';
 
 if(!empty($_GET['length']) && $_GET['length'] > 7){
     $_SESSION['length'] = $_GET['length'];
+    $_SESSION['repeat'] = $_GET['repeat_char'];
+    $_SESSION['letters'] = $_GET['letters'];
+    $_SESSION['numbers'] = $_GET['numbers'];
+    $_SESSION['symbols'] = $_GET['symbols'];
     header("Location: ./result.php");
 }
 
@@ -58,13 +62,13 @@ if(!empty($_GET['length']) && $_GET['length'] > 7){
                 </div>
                 <div class="col-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="repeat_char" id="repeat_char1">
+                        <input class="form-check-input" type="radio" name="repeat_char" id="repeat_char1" value="yes">
                         <label class="form-check-label" for="flexRadioDefault1">
                             YES
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="repeat_char" id="repeat_char2" checked>
+                        <input class="form-check-input" type="radio" name="repeat_char" id="repeat_char2" value="no">
                         <label class="form-check-label" for="flexRadioDefault2">
                             NO
                         </label>
@@ -74,13 +78,13 @@ if(!empty($_GET['length']) && $_GET['length'] > 7){
             <div class="row justify-content-end pb-4">
                 <div class="col-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="letters" id="letters">
+                        <input class="form-check-input" type="checkbox" name="letters" value="1" id="letters" checked>
                         <label class="form-check-label" for="flexCheckDefault">
                             Lettere
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="numbers" id="numbers">
+                        <input class="form-check-input" type="checkbox" name="numbers" value="1" id="numbers">
                         <label class="form-check-label" for="flexCheckChecked">
                             Numeri
                         </label>
@@ -101,7 +105,6 @@ if(!empty($_GET['length']) && $_GET['length'] > 7){
             </div>
         </form>
     </div>
-
 
 </body>
 

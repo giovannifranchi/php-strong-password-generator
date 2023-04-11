@@ -25,10 +25,15 @@ $length = $_SESSION['length'];
 
     <h1>Your password is:</h1>
     
-    <h2><?php echo generatePassword($length,$up_chars,$low_chars, $numbers,$symbols)?></h2>
+    <h2>
+        <?php if($_SESSION['repeat'] == 'yes'){
+            echo generatePassword($length, $up_chars, $low_chars, $numbers, $symbols);
+        }else {
+            echo generateUnivoxPassword($length, $up_chars, $low_chars, $numbers, $symbols);
+        } ?>
+    </h2>
 
     <a href="reset.php">Try Again</a>
-
-
+    <?php var_dump($_SESSION) ?>
 </body>
 </html>
